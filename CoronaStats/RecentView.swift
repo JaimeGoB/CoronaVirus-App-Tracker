@@ -20,6 +20,8 @@ struct RecentView: View {
             
             VStack{
             
+                TotalDataView(totalData:  covidFetch.totalData)
+                
                 ListHeaderView()
                 
                 List{

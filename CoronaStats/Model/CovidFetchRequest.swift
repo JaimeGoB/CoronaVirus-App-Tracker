@@ -44,10 +44,11 @@ class CovidFetchRequest: ObservableObject {
                 print(json)
                 
                 let confirmed = json[0]["confirmed"].intValue
+                let critical = json[0]["critical"].intValue
                 let deaths = json[0]["deaths"].intValue
                 let recovered = json[0]["recovered"].intValue
                 
-                self.totalData = TotalData(confirmed: confirmed, deaths: deaths, recovered: recovered)
+                self.totalData = TotalData(confirmed: confirmed, critical: critical, deaths: deaths, recovered: recovered)
                 
             }else{
                 //set default values
@@ -77,10 +78,11 @@ class CovidFetchRequest: ObservableObject {
                     let longitude = countryData["longitude"] as? Double ?? 0
                     let latitude = countryData["latitude"] as? Double ?? 0
                     let confirmed = countryData["confirmed"] as? Int64 ?? 0
+                    let critical = countryData["critical"] as? Int64 ?? 0
                     let deaths = countryData["deaths"] as? Int64 ?? 0
                     let recovered = countryData["recovered"] as? Int64 ?? 0
                     
-                    let countryObject = CountryData(country: country, confirmed: confirmed, deaths: deaths, recovered: recovered, longitude: longitude, latitude: latitude)
+                    let countryObject = CountryData(country: country, confirmed: confirmed, critical: critical, deaths: deaths, recovered: recovered, longitude: longitude, latitude: latitude)
                     
                     allCount.append(countryObject)
                 }

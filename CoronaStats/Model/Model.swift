@@ -13,7 +13,7 @@ struct TotalData {
     
     //The variables will be used to calculate worldwide statistics from API.
     let confirmed: Int
-    //let critical: Int
+    let critical: Int
     let deaths: Int
     let recovered: Int
     
@@ -36,7 +36,7 @@ struct CountryData {
     //The variables will be used to calculate worldwide statistics from API.
     let country: String
     let confirmed: Int64
-    //let critical: Int64
+    let critical: Int64
     let deaths: Int64
     let recovered: Int64
     let longitude: Double
@@ -55,5 +55,5 @@ struct CountryData {
 }
 
 //Default values in case we cannot reach API
-let testTotalData = TotalData(confirmed: 0, deaths: 0, recovered: 0)
-let testCountryData = CountryData(country: "None", confirmed: 0, deaths: 0, recovered: 0, longitude: 0, latitude: 0)
+let testTotalData = TotalData(confirmed: 1, critical: 1, deaths: 1, recovered: 1)
+let testCountryData = CountryData(country: "None", confirmed: 1, critical: 1, deaths: 1, recovered: 1, longitude: 0, latitude: 0)

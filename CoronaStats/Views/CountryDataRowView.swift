@@ -30,7 +30,6 @@ struct CountryDataRowView: View {
             
             Spacer()
 
-            
             Text(countryData.deaths.formatNumber())
                 .frame(width: 50, height: 40, alignment: .center)
                 .font(.subheadline)
