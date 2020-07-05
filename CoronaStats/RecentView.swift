@@ -14,15 +14,23 @@ struct RecentView: View {
     
     @State var searchText = ""
     
+    @State var isSearchVisible = false
+    
     var body: some View {
         
         NavigationView{
             
             VStack{
             
+                if isSearchVisible{
+                    SearchView(searchText: $searchText)
+                }
+                
                 TotalDataView(totalData:  covidFetch.totalData)
                 
                 ListHeaderView()
+                
+                
                 
                 List{
                     
@@ -30,10 +38,28 @@ struct RecentView: View {
                         self.searchText.isEmpty ? true : $0.country.lowercased().contains(self.searchText.lowercased())
                     }, id: \.country){CountryData in
                         
-                        CountryDataRowView(countryData: CountryData)
+                        NavigationLink(destination: CountryDetailView(countryData: CountryData)){
+                        
+                            CountryDataRowView(countryData: CountryData)
+                        }
                     }
                 }
-            }//ed of vstack
+            }//end of vstack
+                .navigationBarTitle("Recent Data", displayMode: .inline)
+                .navigationBarItems(trailing:
+                        
+                        Button(action: {
+                
+                            self.isSearchVisible.toggle()
+                            
+                            if !self.isSearchVisible{
+                                self.searchText = ""
+                            }
+                            
+                        }, label: {
+                            Image(systemName: "magnifyingglass")
+                        })
+                )
         }//end of navigation
     }
 }

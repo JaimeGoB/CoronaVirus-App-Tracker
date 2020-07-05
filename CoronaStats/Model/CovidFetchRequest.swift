@@ -35,12 +35,13 @@ class CovidFetchRequest: ObservableObject {
     func getCurrentTotal(){
         
         //The link below was from getDailyReportsTotal
-        AF.request("https://covid-19-data.p.rapidapi.com/report/totals?date-format=YYYY-MM-DD&format=json&date=2020-06-18", headers: headers).responseJSON { response in
+        AF.request("https://covid-19-data.p.rapidapi.com/totals", headers: headers).responseJSON { response in
             
             let result = response.data
             
             if(result != nil){
                 let json = JSON(result!)
+                print("Inside of CovidFetch:")
                 print(json)
                 
                 let confirmed = json[0]["confirmed"].intValue

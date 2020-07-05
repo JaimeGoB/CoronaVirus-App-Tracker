@@ -46,7 +46,7 @@ struct ListHeaderView: View {
             
         }
         //Background color of header
-        .background(Color.gray)
+        .background(Color("cardBackgroundGray"))
     
     }
 }

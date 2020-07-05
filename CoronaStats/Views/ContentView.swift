@@ -15,10 +15,18 @@ struct ContentView: View {
         
         TabView{
             RecentView()
-                .tabItem{
-                    Tab(imageName: "chart.bar", text: "Recent")
+            .tabItem{
+                Tab(imageName: "chart.bar", text: "Recent")
             }
             .tag(0)
+            
+            MapContainerView()
+                .edgesIgnoringSafeArea(.vertical
+            )
+            .tabItem{
+                Tab(imageName: "map", text: "Map")
+            }
+            .tag(1)
         }
     }
 }
